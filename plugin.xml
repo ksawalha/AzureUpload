@@ -2,10 +2,8 @@
         id="cordova-plugin-azure-upload"
         version="1.1.0">
     <name>AzureUpload</name>
-    <description>Plugin for uploading files to Azure Blob Storage with local notifications.</description>
     <license>MIT</license>
     <keywords>cordova, azure, upload, plugin, notifications</keywords>
-    
     <platform name="android">
         <config-file target="config.xml" parent="/*">
             <feature name="AzureUpload">
@@ -16,7 +14,6 @@
         <dependency id="cordova-plugin-local-notification"/>
         <dependency id="cordova-plugin-file"/>
     </platform>
-
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="AzureUpload">
@@ -27,7 +24,6 @@
         <dependency id="cordova-plugin-local-notification"/>
         <dependency id="cordova-plugin-file"/>
     </platform>
-
     <js-module src="www/AzureUpload.js" name="AzureUpload">
         <clobbers target="cordova.plugins.AzureUpload"/>
     </js-module>
