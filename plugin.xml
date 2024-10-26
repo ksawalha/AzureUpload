@@ -1,20 +1,34 @@
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-azure-upload" version="1.1.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-azure-upload"
+        version="1.1.0">
     <name>AzureUpload</name>
-    <js-module src="www/azureUpload.js" name="AzureUpload">
-        <clobbers target="cordova.plugins.AzureUpload" />
-    </js-module>
+    <description>Plugin for uploading files to Azure Blob Storage with local notifications.</description>
+    <license>MIT</license>
+    <keywords>cordova, azure, upload, plugin, notifications</keywords>
     
     <platform name="android">
-        <source-file src="src/android/AzureUpload.java" target-dir="src/com/yourpackage/azureupload" />
-        <framework src="com.microsoft.azure:azure-storage-android:8.7.0" />
-        <framework src="androidx.core:core:1.6.0" /> <!-- For notifications -->
+        <config-file target="config.xml" parent="/*">
+            <feature name="AzureUpload">
+                <param name="android-package" value="com.example.azureupload.AzureUpload"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/AzureUpload.java" target-dir="src/com/example/azureupload" />
+        <dependency id="cordova-plugin-local-notification"/>
+        <dependency id="cordova-plugin-file"/>
     </platform>
-    
+
     <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AzureUpload">
+                <param name="ios-package" value="AzureUpload"/>
+            </feature>
+        </config-file>
         <source-file src="src/ios/AzureUpload.swift" />
-        <podspec>
-            pod 'AzureStorage', '~> 0.2.0'
-            pod 'UserNotifications' <!-- For notifications -->
-        </podspec>
+        <dependency id="cordova-plugin-local-notification"/>
+        <dependency id="cordova-plugin-file"/>
     </platform>
+
+    <js-module src="www/AzureUpload.js" name="AzureUpload">
+        <clobbers target="cordova.plugins.AzureUpload"/>
+    </js-module>
 </plugin>
