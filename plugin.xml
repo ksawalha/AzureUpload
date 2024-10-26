@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-azure-upload" version="1.0.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-azure-upload" version="1.1.0">
     <name>AzureUpload</name>
     <js-module src="www/azureUpload.js" name="AzureUpload">
         <clobbers target="cordova.plugins.AzureUpload" />
     </js-module>
     
     <platform name="android">
-        <!-- Java source file for Android -->
         <source-file src="src/android/AzureUpload.java" target-dir="src/com/yourpackage/azureupload" />
-        
-        <!-- Add Android dependency for Azure SDK -->
         <framework src="com.microsoft.azure:azure-storage-android:8.7.0" />
+        <framework src="androidx.core:core:1.6.0" /> <!-- For notifications -->
     </platform>
     
     <platform name="ios">
-        <!-- Swift source file for iOS -->
         <source-file src="src/ios/AzureUpload.swift" />
-        
-        <!-- Add iOS dependency for Azure SDK (use CocoaPods) -->
         <podspec>
             pod 'AzureStorage', '~> 0.2.0'
+            pod 'UserNotifications' <!-- For notifications -->
         </podspec>
     </platform>
 </plugin>
